@@ -4,11 +4,14 @@
 #include <string>
 template<typename T, int k>
 class tstack {
+
   private:
+
   T arr[k];
   int top;
 
   public:
+
   tstack():top(-1) {}
   bool isEmpty() const {
     return top == -1;
