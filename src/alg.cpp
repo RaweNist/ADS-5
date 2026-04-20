@@ -9,9 +9,9 @@ std::string infx2pstfx(const std::string& inf) {
   std::string res = "";
   tstack<char, 100> temp;
   for (int i = 0; i < inf.size(); ++i) {
-    if (numbers.find(inf[i]) <= 10 && numbers.find(inf[i]) >= 0) {
+    if (numbers.find(inf[i]) <= 10) {
       res += inf[i];
-    } else if (operands.find(inf[i]) >= 0) {
+    } else if (operands.find(inf[i]) < operands.size()) {
       int op, op_temp;
       if (inf[i] == '(') {
         temp.push(inf[i]);
@@ -62,9 +62,9 @@ int eval(const std::string& pref) {
   tstack<int, 100> temp1;
   std::string str = infx2pstfx(pref);
   for (int i = 0; i < str.size(); ++i) {
-    if (numbers.find(str[i]) >= 0 && numbers.find(str[i]) <= 10) {
+    if (numbers.find(str[i]) <= 10) {
       temp1.push(str[i] - '0');
-    } else if (operands.find(str[i]) >= 0) {
+    } else if (operands.find(str[i]) < operands.size()) {
       int b = temp1.get();
       temp1.pop();
       int a = temp1.get();
