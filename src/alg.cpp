@@ -64,18 +64,18 @@ int eval(const std::string& pref) {
   std::string numbers = "0123456789";
   std::string operands = "()+-*/";
   tstack<int, 100> temp1;
-  std::string str = infx2pstfx(pref);
-  for (int i = 0; i < str.size(); ++i) {
-    if (str[i] != ' ') {
-      if (numbers.find(str[i]) <= 10) {
-      temp1.push(str[i] - '0');
-      } else if (operands.find(str[i]) < operands.size()) {
+  //std::string str = infx2pstfx(pref);
+  for (int i = 0; i < pref.size(); ++i) {
+    if (pref[i] != ' ') {
+      if (numbers.find(pref[i]) <= 10) {
+      temp1.push(pref[i] - '0');
+      } else if (operands.find(pref[i]) < operands.size()) {
         int b = temp1.get();
         temp1.pop();
         int a = temp1.get();
         temp1.pop();
         int ab = 0;
-        switch (str[i]) {
+        switch (pref[i]) {
         case '+': ab = a + b; break;
         case '-': ab = a - b; break;
         case '*': ab = a * b; break;
