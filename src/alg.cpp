@@ -36,14 +36,18 @@ std::string infx2pstfx(const std::string& inf) {
             temp.pop();
             if (!temp.isEmpty()) {
               op_temp = operands.find(temp.get());
-            } else { break; }
+            } else { 
+              break;
+            }
           }
           temp.push(inf[i]);
         }
       } else if (temp.isEmpty()) {
         temp.push(inf[i]);
       }
-    } else { throw std::string("Wrong element format"); }
+    } else {
+      throw std::string("Wrong element format");
+    }
   }
   while (!temp.isEmpty()) {
     res += temp.get();
@@ -75,7 +79,9 @@ int eval(const std::string& pref) {
         break;
       }
       temp1.push(ab);
-    } else { throw std::string("Wrong element format"); }
+    } else {
+      throw std::string("Wrong element format");
+    }
   }
   return temp1.get();
 }
