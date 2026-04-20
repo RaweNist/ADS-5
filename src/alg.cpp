@@ -3,19 +3,19 @@
 #include <map>
 #include "tstack.h"
 
-static std::string numbers = "0123456789";
-static std::string operands = "()+-*/";
+std::string numbers = "0123456789";
+std::string operands = "()+-*/";
 std::string infx2pstfx(const std::string& inf) {
   std::string res = "";
-  TStack<char, 100> temp;
+  tstack<char, 100> temp;
   for (int i = 0; i < inf.size(); ++i) {
     if (numbers.find(inf[i]) <= 10 && numbers.find(inf[i]) >= 0) {
       res += inf[i];
     } else if (operands.find(inf[i]) >= 0) {
       int op, op_temp;
-      if (inf[i] == '(')
+      if (inf[i] == '(') {
         temp.push(inf[i]);
-      else if (!temp.isEmpty()) {
+      } else if (!temp.isEmpty()) {
         op = operands.find(inf[i]);
         op_temp = operands.find(temp.get());
         if (op == 2 || op == 3) op = 2;
@@ -40,8 +40,9 @@ std::string infx2pstfx(const std::string& inf) {
           }
           temp.push(inf[i]);
         }
-      } else if (temp.isEmpty())
+      } else if (temp.isEmpty()) {
         temp.push(inf[i]);
+      }
     } else throw std::string("Wrong element format");
   }
   while (!temp.isEmpty()) {
@@ -52,7 +53,7 @@ std::string infx2pstfx(const std::string& inf) {
 }
 
 int eval(const std::string& pref) {
-  TStack<int, 100> temp1;
+  tstack<int, 100> temp1;
   std::string str = infx2pstfx(pref);
   for (int i = 0; i < str.size(); ++i) {
     if (numbers.find(str[i]) >= 0 && numbers.find(str[i]) <= 10) {
