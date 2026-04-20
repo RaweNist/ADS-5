@@ -1,13 +1,14 @@
 // Copyright 2021 NNTU-CS
 #ifndef INCLUDE_TSTACK_H_
 #define INCLUDE_TSTACK_H_
+#include <array>
 #include <string>
-template<typename T, int k>
+template<typename T, int size>
 class tstack {
  private:
-  static constexpr int size = k;
-  T arr[size];
+  std::array<T, size> arr;
   int top;
+
  public:
   tstack() : top(-1) {}
   bool isEmpty() const {
