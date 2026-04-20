@@ -36,7 +36,7 @@ std::string infx2pstfx(const std::string& inf) {
             temp.pop();
             if (!temp.isEmpty()) {
               op_temp = operands.find(temp.get());
-            } else { 
+            } else {
               break;
             }
           }
