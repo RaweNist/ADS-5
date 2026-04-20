@@ -4,20 +4,17 @@
 #include <string>
 template<typename T, int k>
 class tstack {
-
-  private:
-
-  T arr[k];
+ private:
+  static constexpr int size = k;
+  T arr[size];
   int top;
-
-  public:
-
-  tstack():top(-1) {}
+ public:
+  tstack() : top(-1) {}
   bool isEmpty() const {
     return top == -1;
   }
   bool isFull() const {
-    return top == k - 1;
+    return top == size - 1;
   }
   T get() const {
     if (!isEmpty())
