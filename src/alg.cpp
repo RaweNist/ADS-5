@@ -57,7 +57,7 @@ std::string infx2pstfx(const std::string& inf) {
     res += ' ';
     temp.pop();
   }
-  return res;
+  return res.substr(0,res.size()-1);
 }
 
 int eval(const std::string& pref) {
