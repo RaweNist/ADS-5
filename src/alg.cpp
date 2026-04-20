@@ -3,9 +3,9 @@
 #include <map>
 #include "tstack.h"
 
-std::string numbers = "0123456789";
-std::string operands = "()+-*/";
 std::string infx2pstfx(const std::string& inf) {
+  std::string numbers = "0123456789";
+  std::string operands = "()+-*/";
   std::string res = "";
   tstack<char, 100> temp;
   for (int i = 0; i < inf.size(); ++i) {
@@ -53,6 +53,8 @@ std::string infx2pstfx(const std::string& inf) {
 }
 
 int eval(const std::string& pref) {
+  std::string numbers = "0123456789";
+  std::string operands = "()+-*/";
   tstack<int, 100> temp1;
   std::string str = infx2pstfx(pref);
   for (int i = 0; i < str.size(); ++i) {
